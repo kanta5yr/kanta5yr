@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table Order</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Table Order ホーム"><span>t.</span> TABLE ORDER</a>
+        <div class="table-label">TABLE <strong>12</strong></div>
+        <button class="staff-link" id="staffModeButton" type="button">店員モード <span aria-hidden="true">→</span></button>
+      </header>
+
+      <section class="hero">
+        <p class="eyebrow">WELCOME TO OUR TABLE</p>
+        <h1>ご注文を、もっと<br /><em>心地よく。</em></h1>
+        <p>メニューを選んで、席からゆっくりご注文いただけます。</p>
+      </section>
+
+      <section class="menu-section" aria-labelledby="menu-title">
+        <div class="section-heading"><div><p class="eyebrow">OUR MENU</p><h2 id="menu-title">メニュー</h2></div><p>表示価格は税込です</p></div>
+        <div class="category-tabs" role="tablist" aria-label="メニューカテゴリー">
+          <button class="tab active" data-category="all" type="button">すべて</button>
+          <button class="tab" data-category="main" type="button">メイン</button>
+          <button class="tab" data-category="side" type="button">サイド</button>
+          <button class="tab" data-category="drink" type="button">ドリンク</button>
+          <button class="tab" data-category="dessert" type="button">デザート</button>
+        </div>
+        <div class="menu-grid" id="menuGrid"></div>
+      </section>
+    </main>
+
+    <aside class="cart" aria-label="ご注文内容">
+      <div class="cart-head"><div><p class="eyebrow">YOUR ORDER</p><h2>ご注文内容</h2></div><span class="cart-count" id="cartCount">0</span></div>
+      <div class="cart-items" id="cartItems"><p class="empty-cart">まだ商品が選ばれていません。<br />メニューから追加してください。</p></div>
+      <div class="cart-footer"><div class="total"><span>合計</span><strong id="total">¥0</strong></div><button class="order-button" id="orderButton" type="button" disabled>注文を確定する <span>→</span></button></div>
+    </aside>
+
+    <dialog id="passwordDialog" class="modal">
+      <form method="dialog" id="passwordForm">
+        <button class="close" value="cancel" aria-label="閉じる">×</button>
+        <p class="eyebrow">STAFF ONLY</p><h2>店員モード</h2>
+        <p>店員モードを開くにはパスワードを入力してください。</p>
+        <label for="password">パスワード</label>
+        <input id="password" type="password" autocomplete="current-password" required />
+        <p class="form-error" id="passwordError" role="alert"></p>
+        <button class="primary" type="submit">ログインする</button>
+        <p class="hint">デモ用パスワード: <code>staff2025</code></p>
+      </form>
+    </dialog>
+
+    <dialog id="staffDialog" class="modal staff-modal">
+      <form method="dialog"><button class="close" value="cancel" aria-label="閉じる">×</button></form>
+      <p class="eyebrow">STAFF DASHBOARD</p><h2>本日の注文</h2>
+      <div class="staff-stats"><div><strong id="orderCount">0</strong><span>注文数</span></div><div><strong id="salesTotal">¥0</strong><span>売上</span></div></div>
+      <div id="staffOrders" class="staff-orders"><p>まだ注文はありません。</p></div>
+      <button id="logoutButton" class="secondary" type="button">店員モードを終了</button>
+    </dialog>
+
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
